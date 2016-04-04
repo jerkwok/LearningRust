@@ -11,3 +11,5 @@ A collection of programs in Rust for exploring the language.
 -Strong static typing in function definitions
 
 -Core values: speed, safety, concurrency
+
+-Ownership: Each value can only have one owner, one object.
