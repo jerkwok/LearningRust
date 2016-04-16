@@ -1,7 +1,7 @@
 extern crate rand;
 
 use std::io;
-use std::cmp::*;
+//use std::cmp::*;
 use rand::Rng;
 
 
@@ -33,11 +33,82 @@ fn displayturn(turn:u8){
 }
 
 fn checkwinner(board: [u8;36]) -> u8{
-	return 1;
-}
+	// Is there a mathematical way to do this!?
 
-fn valiadateinput(col:&str, row:&str, sym:&str){
+	//check Chaos
+	let mut chaoswin = 0;
+	for x in 0..6{
+		for y in 0..6{
+	    	if board[x * 6 + y] != 0{
+	    		// println!("{:?}",chaoswin );
+	    		chaoswin = chaoswin + 1;
+	    	}
+	    }
+	}
 
+	//Chaos victory
+	if chaoswin == 36{
+		return 2
+	}
+
+	//check Order
+	//check horizaontals
+	for x in 0..6{
+		for y in 0..2{
+			if board[x * 6 + y] != 0 &&
+				board[x * 6 + (y + 0)] == board[x * 6 + (y + 1)] &&
+				board[x * 6 + (y + 1)] == board[x * 6 + (y + 2)] &&
+				board[x * 6 + (y + 2)] == board[x * 6 + (y + 3)] &&
+				board[x * 6 + (y + 3)] == board[x * 6 + (y + 4)]
+				{
+					return 1;
+			}
+		}
+	}
+
+	//check verticals
+	for y in 0..6{
+		for x in 0..2{
+			if board[x * 6 + y] != 0 &&
+				board[(x + 0) * 6 + y] == board[(x + 1) * 6 + y] &&
+				board[(x + 1) * 6 + y] == board[(x + 2) * 6 + y] &&
+				board[(x + 2) * 6 + y] == board[(x + 3) * 6 + y] &&
+				board[(x + 3) * 6 + y] == board[(x + 4) * 6 + y]
+				{
+					return 1;
+			}
+		}
+	}
+
+	//check \ diagonals
+	for y in 0..2{
+		for x in 0..2{
+			if board[x * 6 + y] != 0 &&
+				board[(x + 0) * 6 + (y + 0)] == board[(x + 1) * 6 + (y + 1)] &&
+				board[(x + 1) * 6 + (y + 1)] == board[(x + 2) * 6 + (y + 2)] &&
+				board[(x + 2) * 6 + (y + 2)] == board[(x + 3) * 6 + (y + 3)] &&
+				board[(x + 3) * 6 + (y + 3)] == board[(x + 4) * 6 + (y + 4)]
+				{
+					return 1;
+			}
+		}
+	}
+
+	//check / diagonals
+	for y in 4..6{
+		for x in 0..2{
+			if board[x * 6 + y] != 0 &&
+				board[(x + 0) * 6 + (y - 0)] == board[(x + 1) * 6 + (y - 1)] &&
+				board[(x + 1) * 6 + (y - 1)] == board[(x + 2) * 6 + (y - 2)] &&
+				board[(x + 2) * 6 + (y - 2)] == board[(x + 3) * 6 + (y - 3)] &&
+				board[(x + 3) * 6 + (y - 3)] == board[(x + 4) * 6 + (y - 4)]
+				{
+					return 1;
+			}
+		}
+	}
+
+	return 0;
 }
 
 fn main() {
@@ -70,17 +141,17 @@ fn main() {
     	let pmoverow = &pmove[2..3];
     	let pmovesym = &pmove[4..5];
 
-    	// println!("{}", pmovecol);
-    	// println!("{}", pmoverow);
-    	// println!("{}", pmovesym);
-
-    	valiadateinput(pmovecol,pmoverow, pmovesym);
-
     	if board[(pmoverow.parse::<u8>().unwrap()*6 + pmovecol.parse::<u8>().unwrap()) as usize] == 0{
 	    	board[(pmoverow.parse::<u8>().unwrap()*6 + pmovecol.parse::<u8>().unwrap()) as usize]=pmovesym.parse::<u8>().unwrap();
 
-	    	if (checkwinner(board) == 1){
-	    		println!("board 1");
+	    	let winner = checkwinner(board);
+	    	// println!("winner: {:?}",winner );
+	    	if winner == 1{
+	    		println!("Order Wins!");
+	    		break;
+	    	}else if winner == 2{
+	    		println!("Chaos Wins!");
+	    		break;
 	    	}
 
 	    	turn+=1;
