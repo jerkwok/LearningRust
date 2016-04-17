@@ -1,0 +1,4 @@
+[package]
+name = "binarysearch"
+version = "0.1.0"
+authors = ["jerkwok <jeremy.kwok@uoit.net>"]
