@@ -1,7 +1,4 @@
-extern crate rand;
-
 use std::io;
-//use std::cmp::*;
 use rand::Rng;
 
 

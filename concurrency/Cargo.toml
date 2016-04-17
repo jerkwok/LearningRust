@@ -1,0 +1,8 @@
+[package]
+name = "concurrency"
+version = "0.1.0"
+authors = ["jerkwok <jeremy.kwok@uoit.net>"]
+
+[dependencies]
+
+rand="0.3.0"
