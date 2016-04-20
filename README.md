@@ -67,7 +67,7 @@ println!("{}", foo); // println borrows foo here
         -Counts the number of references that own a binding, ensures atomicity
     
 ***Course Concepts***
-
+-
     -Type Systems: Strong Static Typing
         -Types indicate memory storage
         -No type inference!
