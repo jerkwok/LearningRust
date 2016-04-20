@@ -8,7 +8,8 @@
 -
     -Cargo
         -Official Build Manager
-        -Cargo is a build tool that builds and compiles projects using external files to declare dependencies on libraries known as crates 
+        -Cargo is a build tool that builds and compiles projects using external files 
+        to declare dependencies on libraries known as crates 
         cargo run will fetch crates, build and run the project all in one line.
 
 ***Safety in Rust***
