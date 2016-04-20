@@ -68,11 +68,11 @@ println!("{}", foo); // println borrows foo here
     
 ***Course Concepts***
 
--Type Systems: Strong Static Typing
-    -Types indicate memory storage
-    -No type inference!
--Lexical Scoping: Ownership
--Closure: Ability to assign closures to bindings
--Functions as Data: Possible with references
+    -Type Systems: Strong Static Typing
+        -Types indicate memory storage
+        -No type inference!
+    -Lexical Scoping: Ownership
+    -Closure: Ability to assign closures to bindings
+    -Functions as Data: Possible with references
 
     
