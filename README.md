@@ -7,7 +7,7 @@
     -Concurrency
         -Basic Concurrency Example
         
-    Language of Choice: ***Rust***
+    Language of Choice: Rust
 
 ***Build Tools***
 -
