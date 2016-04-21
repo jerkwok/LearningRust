@@ -63,8 +63,12 @@ println!("{}", foo); // println borrows foo here
     
 ### Concurrency
     -Mutexes (mutual exclusion)
+        Alllows safe mutation of a value
     -Arc (Atomic Reference Counter)
-        -Counts the number of references that own a binding, ensures atomicity
+        -Counts the number of references that own a binding, ensures atomicity, 
+        allows ownership between multiple threads
+    -Channels
+        Send/Recieve architecture that allows for synchronization
     
 ***Course Concepts***
 -
