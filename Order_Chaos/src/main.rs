@@ -1,3 +1,5 @@
+extern crate rand;
+
 use std::io;
 use rand::Rng;
 
@@ -145,9 +147,11 @@ fn main() {
 	    	// println!("winner: {:?}",winner );
 	    	if winner == 1{
 	    		println!("Order Wins!");
+	    		displayboard(board);
 	    		break;
 	    	}else if winner == 2{
 	    		println!("Chaos Wins!");
+	    		displayboard(board);
 	    		break;
 	    	}
 

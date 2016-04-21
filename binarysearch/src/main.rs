@@ -5,7 +5,7 @@
 //Comparable in Java.
 fn bin_search<T : PartialOrd>(source : &[T], target : &T) -> Option<usize> {
     let mut right=0;
-    let mut left=source.len();
+    let mut left=source.len();  
     loop {
         if right>=left {
             return None;

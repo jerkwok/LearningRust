@@ -3,6 +3,7 @@ use std::thread;
 use std::sync::mpsc;
 use std::sync::Arc;
 use std::sync::Mutex;
+use std::time::Duration;
 
 //Arc Mutex example
 fn arcmutex(){
@@ -10,21 +11,20 @@ fn arcmutex(){
 	let data = Arc::new(Mutex::new(vec![0,1,2,3,4,5]));
 
 	let mut results = vec![];
-	for i in 0..7 {
-			let mutex = data.clone();
+	for i in 0..6 {
+		let mutex = data.clone();
 		
 		let handler = thread::spawn(move || {
 			let mut data = mutex.lock().unwrap();
 
-			//Mutate this data!
 			data[i] = data[i] + 1;
 			println!("{:?}",data[i]);
 
-			//Compiler is SMART; no data races
-			data[0] = data[0] + 1;
-			println!("{:?}",data[0]);
 		});
 		
+		//sleep will allow threads to execute in order
+		// thread::sleep(Duration::from_millis(50));
+
 		results.push(handler);
 	}
 }
@@ -49,7 +49,9 @@ fn channel(){
 
 fn main() {
 	
+	println!("Arc Mutex");
 	arcmutex();
-	// channel();
+	println!("Channel");
+	channel();
 
 }

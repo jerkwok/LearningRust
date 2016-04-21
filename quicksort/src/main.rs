@@ -1,4 +1,3 @@
-// Type alias for function that returns true if arguments should be swapped
 type OrderFunc<T> = Fn(&T, &T) -> bool;
  
 fn lessthan<T: Ord>(x: &T, y: &T) -> bool {
